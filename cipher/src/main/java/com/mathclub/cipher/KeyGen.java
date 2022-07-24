@@ -38,7 +38,7 @@ public class KeyGen {
       if (file.createNewFile()) {
         FileWriter fileWriter = new FileWriter(file);
         for (String bigram : key.keySet()) {
-          String line = bigram + "," + key.get(bigram) + "\n";
+          String line = "\"" + bigram + "\"" + "," + "\"" + key.get(bigram) + "\"" + "\n";
           fileWriter.write(line);
 	}
         fileWriter.flush();
