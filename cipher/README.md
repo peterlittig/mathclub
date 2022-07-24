@@ -30,4 +30,5 @@ To encrypt a plaintext file:
      encrypt command will generate a new key.csv file.
 
 To decrypt a ciphertext file:
-1. TBD.
+1. Start with ciphertext.txt file in the the cipher directory. The key.csv used to generate the ciphertext should be in the directory as well.
+2. Run the decrypt command: `./decrypt`
