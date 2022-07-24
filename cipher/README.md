@@ -4,9 +4,15 @@ Encryption-related material for The Math Club podcast.
 
 ## Background
 
-The NK23 cipher is a substitution cipher invented by podcast host Noah King when he was in high school. Noah describes the basic mechanism of the cipher in episode 10 of the podcast, "Key Ideas". In a nutshell, here's how he described it:
+The NK23 cipher is a substitution cipher invented by podcast host Noah King when he was in high school. Noah describes the basic mechanism of the cipher in episode 10 of the podcast, "Key Ideas". In a nutshell, here's his description:
 
-Start with a message that you'd like to encrypt, for example, "THE CROW FLIES AT MIDNIGHT". Break this message up into bigrams: "TH", "E ", "CR", "OW", " F", "LI", "ES", " A", "T ", "MI", "DN", "IG", and "HT". Next replace each of these bigrams with a 3-digit number. A table of the mapping between the bigrams and the numbers should already be selected (and stored away from prying eyes!). Since there are 27(27) = 729 possibly bigrams, the table will contain 729 different three-digit numbers (we allow for leading zeroes, so "001", "002", etc., are possible values.) Using the table, simply replace the bigrams with their corresponding numbers. So, if "TH" maps to "318", "E " maps to "097", "CR" maps to "442", etc., the encrypted message will be something like this:
+1. Start with a message that you'd like to encrypt, for example, "THE CROW FLIES AT MIDNIGHT" (<-- that's how spied talk.)
+2. Break the message up into bigrams: "TH", "E ", "CR", "OW", " F", "LI", "ES", " A", "T ", "MI", "DN", "IG", and "HT", making sure to keep them in the proper order.
+3. Next, replace each of bigram with a 3-digit number. A table of mapping between bigrams and numbers should already be selected (and stored away from prying eyes!).
+  - Note that since there are `27(27) = 729` possible bigrams, the table will contain 729 different three-digit numbers.
+  - We allow leading zeroes, so "001", "002", etc., are possible values.)
+  - Using the table, simply replace the bigrams with their corresponding numbers.
+  - So, if "TH" maps to "318", "E " maps to "097", "CR" maps to "442", etc., the encrypted message will be something like this:
 
 ```318097442606277381400522571003416825111```
 
