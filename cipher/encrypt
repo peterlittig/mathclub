@@ -1,4 +1,9 @@
+if [ ! -f ./plaintext.txt ]; then
+  echo "Nothing to encrypt - there is no plaintext.txt in the working directory."
+  exit
+fi
 if [ ! -f ./key.csv ]; then
+  echo "No key.csv file found - generating one now."
   keygen
 fi
 if [ ! -f ./target/classes/com/mathclub/cipher/Encrypt.class ]; then

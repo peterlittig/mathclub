@@ -1,0 +1,14 @@
+if [ -f ./key.csv ]; then
+  echo "Deleting key.csv file..."
+  rm ./key.csv
+fi
+if [ -f ./ciphertext.txt ]; then
+  echo "Deleting ciphertext.txt file..."
+  rm ./ciphertext.txt
+fi
+if [ -f ./decrypted-text.txt ]; then
+  echo "Deleting decrypted-text.txt file..."
+  rm ./decrypted-text.txt
+fi
+
+mvn clean

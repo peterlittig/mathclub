@@ -1,0 +1,16 @@
+if [ ! -f ./ciphertext.txt ]; then
+  echo "Nothing to decrypt - there is no ciphertext.txt file in the working directory."
+  exit
+fi
+if [ ! -f ./key.csv ]; then
+  echo "Cannot decrypt ciphertext without a key.csv file."
+  exit
+fi
+if [ -f ./decrypted-text.txt ]; then
+  echo "A decrypted-text.txt file already exists in the working directory."
+  exit
+fi
+if [ ! -f ./target/classes/com/mathclub/cipher/Decrypt.class ]; then
+  mvn compile
+fi
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Decrypt"

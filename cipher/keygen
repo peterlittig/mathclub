@@ -1,3 +1,7 @@
+if [ -f ./key.csv ]; then
+  echo "The working directory already contains a key.csv file."
+  exit
+fi
 if [ ! -f ./target/classes/com/mathclub/cipher/KeyGen.class ]; then
   mvn compile
 fi

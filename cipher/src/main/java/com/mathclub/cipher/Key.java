@@ -44,7 +44,6 @@ public class Key {
   private Map<String, String> initializeEncryptionMap(List<List<String>> mappings) {
     ImmutableMap.Builder<String, String> encryptionMap = ImmutableMap.builder();
     for (List<String> mapping : mappings) {
-      System.out.println(mapping);
       // TODO: Add validation checks.
       encryptionMap.put(mapping.get(0).substring(1, 3), mapping.get(1).substring(1, 4));
     }
