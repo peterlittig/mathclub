@@ -4,7 +4,7 @@ if [ ! -f ./plaintext.txt ]; then
 fi
 if [ ! -f ./key.csv ]; then
   echo "No key.csv file found - generating one now."
-  keygen
+  ./keygen
 fi
 if [ ! -f ./target/classes/com/mathclub/cipher/Encrypt.class ]; then
   mvn compile
