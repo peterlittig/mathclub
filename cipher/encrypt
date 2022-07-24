@@ -1,0 +1,7 @@
+if [ ! -f ./key.csv ]; then
+  keygen
+fi
+if [ ! -f ./target/classes/com/mathclub/cipher/Encrypt.class ]; then
+  mvn compile
+fi
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Encrypt"

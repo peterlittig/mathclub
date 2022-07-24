@@ -1,0 +1,4 @@
+if [ ! -f ./target/classes/com/mathclub/cipher/KeyGen.class ]; then
+  mvn compile
+fi
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.KeyGen"
