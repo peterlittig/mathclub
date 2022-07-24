@@ -8,7 +8,7 @@ The NK23 cipher is a substitution cipher invented by podcast host Noah King when
 
 1. Start with a message that you'd like to encrypt, for example, "THE CROW FLIES AT MIDNIGHT" (<-- that's how spied talk.)
 2. Break the message up into bigrams: "TH", "E ", "CR", "OW", " F", "LI", "ES", " A", "T ", "MI", "DN", "IG", and "HT", making sure to keep them in the proper order.
-3. Next, replace each of bigram with a 3-digit number. A table of mapping between bigrams and numbers should already be selected (and stored away from prying eyes!).
+3. Next, replace each bigram with a 3-digit number. A table of mappings between bigrams and numbers should already be selected (and stored away from prying eyes!).
   - Note that since there are `27(27) = 729` possible bigrams, the table will contain 729 different three-digit numbers.
   - We allow leading zeroes, so "001", "002", etc., are possible values.)
   - Using the table, simply replace the bigrams with their corresponding numbers.
@@ -16,7 +16,7 @@ The NK23 cipher is a substitution cipher invented by podcast host Noah King when
 
 ```318097442606277381400522571003416825111```
 
-This string of digits is the ciphertext associated to the input plaintext. Who on Earth can tell what that means?? Ah! Anyone who knows the table of mappings can use it convert each three-digit number back to the original bigram. Hopefully, the only one who knows the key besides Noah is the intended receipient of the message!
+This string of digits is the ciphertext associated to the input plaintext. Who on Earth can tell what that means?? Ah! Anyone who knows the table of mappings can use it convert each three-digit number back to the original bigram. Hopefully, the only one who knows the key besides Noah is the intended recipient of the message!
 
 ## The Code
 
