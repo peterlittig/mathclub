@@ -59,7 +59,7 @@ public class Key {
 
   public String encrypt(String bigram) {
     if (!encryptionMap.containsKey(bigram)) {
-      throw new IllegalArgumentException("Cannot encrupt invalid bigram: " + bigram);
+      throw new IllegalArgumentException("Cannot encrypt invalid bigram: " + bigram);
     }
     return encryptionMap.get(bigram);
   }

@@ -1,12 +1,34 @@
-if [ ! -f ./plaintext.txt ]; then
-  echo "Nothing to encrypt - there is no plaintext.txt in the working directory."
+if [ -z "$1" ]; then
+  # Use default filename
+  targetFile="plaintext.txt"
+else
+  targetFile=$1
+fi
+
+if [ ! -f ./$targetFile ]; then
+  echo "Nothing to encrypt - there is no file named $targetFile in the working directory."
   exit
 fi
+
+# If there is no key.csv in the working directory, create one.
 if [ ! -f ./key.csv ]; then
   echo "No key.csv file found - generating one now."
   ./keygen
 fi
+
+encryptedFilename="encrypted-$targetFile"
+
+# Don't overwrite pre-existing file.
+if [ -f ./$encryptedFilename ]; then
+  echo "A file named encrypted-$targetFile already exists in the working directory. Exiting..."
+  exit
+fi
+
+# Compile the source code if necessary.
 if [ ! -f ./target/classes/com/mathclub/cipher/Encrypt.class ]; then
+  echo "Compiling java code..."
   mvn compile
 fi
-mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Encrypt"
+
+echo "Encrypting $targetFile..."
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Encrypt" -Dexec.args="$targetFile"

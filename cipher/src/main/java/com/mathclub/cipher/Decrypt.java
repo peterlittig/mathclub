@@ -1,7 +1,5 @@
 package com.mathclub.cipher;
 
-import com.mathclub.cipher.util.PlaintextFileReader;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
@@ -13,20 +11,34 @@ import java.nio.file.Paths;
 public class Decrypt {
 
   private static final String KEY_FILENAME = "key.csv";
-  private static final String CIPHERTEXT_FILENAME = "ciphertext.txt";
-  private static final String DECRYPTED_TEXT_FILENAME = "decrypted-text.txt";
+  private static final String DEFAULT_CIPHERTEXT_FILENAME = "ciphertext.txt";
+  private static final String DEFAULT_DECRYPTED_FILENAME = "decrypted.txt";
+  private static final String DECRYPTION_SUFFIX = "-decrypted";
 
   private static Key key;
+  private static String ciphertextFilename = DEFAULT_CIPHERTEXT_FILENAME;
+  private static String decryptedFilename = DEFAULT_DECRYPTED_FILENAME;
 
   public static void main(String[] args) throws Exception {
-    key = new Key(KEY_FILENAME);
-    String ciphertext = readCiphertextFile(CIPHERTEXT_FILENAME);
+    setConfiguration(args);
+    String ciphertext = readCiphertextFile(ciphertextFilename);
     String decryptedText = decrypt(ciphertext);
-    writeDecryptedTextFile(decryptedText, DECRYPTED_TEXT_FILENAME);
+    writeDecryptedTextFile(decryptedText, decryptedFilename);
+  }
+
+  private static void setConfiguration(String[] args) {
+    key = new Key(KEY_FILENAME);
+    if (args.length >= 1) {
+      ciphertextFilename = args[0];
+    }
+    if (!ciphertextFilename.equals(DEFAULT_CIPHERTEXT_FILENAME)) {
+      decryptedFilename = ciphertextFilename + DECRYPTION_SUFFIX;
+    }
   }
 
   private static String readCiphertextFile(String filename) throws Exception {
-    return new String(Files.readAllBytes(Paths.get(filename)));
+    return new String(Files.readAllBytes(Paths.get(filename)))
+        .replaceAll("[^0-9]", "");
   }
 
   private static String decrypt(String cipherText) {

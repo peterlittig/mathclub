@@ -1,5 +1,12 @@
-if [ ! -f ./ciphertext.txt ]; then
-  echo "Nothing to decrypt - there is no ciphertext.txt file in the working directory."
+if [ -z "$1" ]; then
+  # Use default filename
+  targetFile="ciphertext.txt"
+else
+  targetFile=$1
+fi
+
+if [ ! -f ./$targetFile ]; then
+  echo "Nothing to decrypt - there is no file named $targetFile in the working directory."
   exit
 fi
 if [ ! -f ./key.csv ]; then
@@ -13,4 +20,4 @@ fi
 if [ ! -f ./target/classes/com/mathclub/cipher/Decrypt.class ]; then
   mvn compile
 fi
-mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Decrypt"
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.Decrypt" -Dexec.args="$targetFile"

@@ -2,7 +2,7 @@ if [ -f ./key.csv ]; then
   echo "The working directory already contains a key.csv file."
   exit
 fi
-if [ ! -f ./target/classes/com/mathclub/cipher/KeyGen.class ]; then
+if [ ! -f ./target/classes/com/mathclub/cipher/GenerateKey.class ]; then
   mvn compile
 fi
-mvn exec:java -Dexec.mainClass="com.mathclub.cipher.KeyGen"
+mvn exec:java -Dexec.mainClass="com.mathclub.cipher.GenerateKey"

@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * KeyGen
+ * GenerateKey
  *
  * Generates a random key for the nk23 cipher.
  */
-public class KeyGen {
+public class GenerateKey {
 
   private static final List<String> ALPHABET
       = ImmutableList.of(
